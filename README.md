@@ -27,13 +27,13 @@ defense: Contain defense method, but currently only Jpeg Compression is provided
 
 Use run_attack.py, it will save all the result files to dir like: 'note_log_all/inception_v3_Dec10_f1'
 ```
-python run_attack.py --gpu_id=0,1,2 --script=LeBA2.py --model1=inception_v3 --model2=resnet152
+python run_attack.py --gpu_id=0,1,2 --script=LeBA10.py --model1=inception_v3 --model2=resnet152
 ```
 
 To attack defensive model:
 ```
 #for Jpeg Compression
-python run_attack.py --gpu_id=0,1,2 --script=LeBA2.py --model1=inception_v3 --model2=resnet_v2_152 --defensive_model=jpeg
+python run_attack.py --gpu_id=0,1,2 --script=LeBA10.py --model1=inception_v3 --model2=resnet_v2_152 --defensive_model=jpeg
 ```
 
 To evaluate results:
