@@ -40,6 +40,7 @@ parser.add_argument('--extra_name', default="", help='extra name for log dir', t
 parser.add_argument('--defense_method', default="", type=str)
 parser.add_argument('--ba_num', default=10, help='TIMI iteration num', type=int)
 parser.add_argument('--ba_interval', default=20, help='TIMI interval num', type=int)
+parser.add_argument('--out_root', default='note_log_all', help='log root dir', type=str)
 
 
 
@@ -59,7 +60,7 @@ task_id=args.task_id
 model1 = args.model1
 
 out_dir = args.model1+'_'+args.extra_name+time.strftime("%b%d", time.localtime())+'_%d'%(task_id)
-out_root='note_log_all'
+out_root= args.out_root
 out_dir_al = out_root+'/'+out_dir
 #pretrain_weight = "../sss_query_attack/note_log_all/mgpu02_lr0.001_3_n55f3/snapshot/resnet152_v2_final.pth"
 pretrain_weight = ""
