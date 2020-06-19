@@ -529,9 +529,9 @@ def run_attack_train(model, model2, data_loader, minibatch,
                 new_prior = (adv_imgs-imgs[correct])[update_index]
                 if with_TIMI:
                     update_slice(imgs, correct, update_index, adv_imgs[update_index])
-                update_slice(last_score, correct, update_index, score3[update_index])
-                update_slice(last_query, correct, update_index, d_score3[update_index])
-                update_slice(last_loss, correct, update_index, loss3[update_index])
+                    update_slice(last_score, correct, update_index, score3[update_index])
+                    update_slice(last_query, correct, update_index, d_score3[update_index])
+                    update_slice(last_loss, correct, update_index, loss3[update_index])
             counts+=correct.float()  # update counts record
             correct[correct]*=c3  #update correct flags
             end_type[(end_type==0)*(~correct)] = 2
@@ -658,7 +658,7 @@ data_loader = load_images_data(args.input_dir, 1, False, args.label_file)
 os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu_id
 gpu_num = len(args.gpu_id.split(',')) 
 if gpu_num==0:
-    gpu_num=1666
+    gpu_num=1
 device = torch.device("cuda")
 model = cpu_model.to(device)
 model2 = cpu_model2.to(device)
