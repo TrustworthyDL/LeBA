@@ -30,7 +30,7 @@ parser = argparse.ArgumentParser(description='RUN BA&SA L3 Query Attack')
 parser.add_argument('--task_id',default=1, help='task idx for log dir name', type=int)
 #parser.add_argument('--input_dir',default='./images', type=str)
 parser.add_argument('--model1', default='inception_v3', help='victim model name', type=str)
-parser.add_argument('--model2', default='resnet_v2_152', help='surrogate model name', type=str)
+parser.add_argument('--model2', default='resnet152', help='surrogate model name', type=str)
 parser.add_argument('--gpu_id', default='0,1,2', type=str)
 #parser.add_argument('--mode', default='train', type=str)
 parser.add_argument('--FL_rate', default=0.01, help='index control forward loss', type=float)
@@ -72,19 +72,19 @@ subprocess.run('cp %s note_log_all/%s/'%(__file__, out_dir), shell=True)
 
 for idx in range(1):
     seed = idx
-    cmd = get_cmd(idx, gpu_id, args.mode, model1, model2, "./images",'labels', out_dir_al, pretrain_weight, seed)
+    cmd = get_cmd(idx, gpu_id, 'train', model1, model2, "./images",'labels', out_dir_al, pretrain_weight, seed)
     run_cmd(cmd, out_dir_al, 'train_images')
     
     cmd = get_cmd(idx, gpu_id, 'test', model1,  model2, "./images",'labels',out_dir_al, 'this_weight', seed)
     run_cmd(cmd, out_dir_al,'test_images')
 
     cmd = get_cmd(idx, gpu_id, 'SimBA++', model1, model2,  "./images",'labels', out_dir_al, '', seed)
-    run_cmd(cmd, out_dir_al,'baseline_images')
+    run_cmd(cmd, out_dir_al,'SimBA++_images')
     
     cmd = get_cmd(idx, gpu_id, 'SimBA+', model1, model2,  "./images",'labels', out_dir_al, '', seed)
-    run_cmd(cmd, out_dir_al,'baseline_images')
+    run_cmd(cmd, out_dir_al,'SimBA+_images')
     
     cmd = get_cmd(idx, gpu_id, 'SimBA', model1, model2,  "./images",'labels', out_dir_al, '', seed)
-    run_cmd(cmd, out_dir_al,'baseline_images')
+    run_cmd(cmd, out_dir_al,'SimBA_images')
 
 
