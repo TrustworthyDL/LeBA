@@ -12,9 +12,9 @@ def get_cmd(task_id, gpu_id, mode, model1, model2,input_dir, label_file, out_dir
     FL_rate=args.FL_rate
     cmd_temp = '''python %s --task_id=%d --gpu_id=%s --mode=%s --model1=%s --model2=%s  \
             --input_dir=%s --label_file=%s --out_dir=%s --pretrain_weight=%s --seed=%d --FL_rate=%s \
-            --attack_type=%s --defense_method=%s --lr=%s --ba_num=%d --ba_interval=%d
+            --defense_method=%s --lr=%s --ba_num=%d --ba_interval=%d
             '''% (script, task_id, gpu_id, mode,  model1, model2, input_dir, label_file,
-                 out_dir, pretrain_weight, seed, FL_rate, args.attack_type, args.defense_method, args.lr, args.ba_num, args.ba_interval)
+                 out_dir, pretrain_weight, seed, FL_rate,  args.defense_method, args.lr, args.ba_num, args.ba_interval)
     return cmd_temp
 
 def run_cmd(cmd, out_dir_al, type_):
@@ -32,11 +32,10 @@ parser.add_argument('--task_id',default=1, help='task idx for log dir name', typ
 parser.add_argument('--model1', default='inception_v3', help='victim model name', type=str)
 parser.add_argument('--model2', default='resnet_v2_152', help='surrogate model name', type=str)
 parser.add_argument('--gpu_id', default='0,1,2', type=str)
-parser.add_argument('--mode', default='train', type=str)
+#parser.add_argument('--mode', default='train', type=str)
 parser.add_argument('--FL_rate', default=0.01, help='index control forward loss', type=float)
 parser.add_argument('--lr', default=0.005, help='learning rate', type=float)
-parser.add_argument('--attack_type', default="non-targeted", type=str)
-parser.add_argument('--script', default="LeBA2.py", type=str)
+parser.add_argument('--script', default="LeBA10.py", type=str)
 parser.add_argument('--extra_name', default="", help='extra name for log dir', type=str)
 parser.add_argument('--defense_method', default="", type=str)
 parser.add_argument('--ba_num', default=10, help='TIMI iteration num', type=int)
@@ -58,12 +57,8 @@ script = args.script
 gpu_id=args.gpu_id
 task_id=args.task_id
 model1 = args.model1
-if args.mode=='train':
-    flag='f'
-elif args.mode=='memory_train':
-    flag='m'
-#atype='nt' if args.attack_type=='non-targeted' else 't'
-out_dir = args.model1+'_'+args.extra_name+time.strftime("%b%d", time.localtime())+'_%s%d'%(flag,task_id)
+
+out_dir = args.model1+'_'+args.extra_name+time.strftime("%b%d", time.localtime())+'_%d'%(task_id)
 out_root='note_log_all'
 out_dir_al = out_root+'/'+out_dir
 #pretrain_weight = "../sss_query_attack/note_log_all/mgpu02_lr0.001_3_n55f3/snapshot/resnet152_v2_final.pth"
