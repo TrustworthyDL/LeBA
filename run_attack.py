@@ -71,19 +71,24 @@ pretrain_weight = ""
 check_mkdir(out_dir_al+'/slog')
 local_time = time.strftime("%b%d_%H%M%S", time.localtime()) 
 model2 = args.model2
+subprocess.run('cp %s note_log_all/%s/'%(script,out_dir), shell=True)
+subprocess.run('cp %s note_log_all/%s/'%(__file__, out_dir), shell=True)
 
 for idx in range(1):
     seed = idx
     cmd = get_cmd(idx, gpu_id, args.mode, model1, model2, "./images",'labels', out_dir_al, pretrain_weight, seed)
     run_cmd(cmd, out_dir_al, 'train_images')
-
-    subprocess.run('cp %s note_log_all/%s/'%(script,out_dir), shell=True)
-    subprocess.run('cp %s note_log_all/%s/'%(__file__, out_dir), shell=True)
-
+    
     cmd = get_cmd(idx, gpu_id, 'test', model1,  model2, "./images",'labels',out_dir_al, 'this_weight', seed)
     run_cmd(cmd, out_dir_al,'test_images')
 
-    cmd = get_cmd(idx, gpu_id, 'baseline', model1, model2,  "./images",'labels', out_dir_al, '', seed)
+    cmd = get_cmd(idx, gpu_id, 'SimBA++', model1, model2,  "./images",'labels', out_dir_al, '', seed)
+    run_cmd(cmd, out_dir_al,'baseline_images')
+    
+    cmd = get_cmd(idx, gpu_id, 'SimBA+', model1, model2,  "./images",'labels', out_dir_al, '', seed)
+    run_cmd(cmd, out_dir_al,'baseline_images')
+    
+    cmd = get_cmd(idx, gpu_id, 'SimBA', model1, model2,  "./images",'labels', out_dir_al, '', seed)
     run_cmd(cmd, out_dir_al,'baseline_images')
 
 
