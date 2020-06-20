@@ -439,6 +439,8 @@ def run_attack_train(model, model2, data_loader, minibatch,
     '''
     data_iter = iter(data_loader)
     img_nums = len(data_loader)
+
+    minibatch = minibatch if minibatch>img_nums else img_nums
     correct_all = torch.ones([img_nums]).bool().to(device)  #record all correct(not success) flag
     counts_all = torch.zeros([img_nums]).to(device)         #Record all query numbers 
     end_type_all = torch.zeros([img_nums]).to(device).float()  #for debug
@@ -479,7 +481,7 @@ def run_attack_train(model, model2, data_loader, minibatch,
             correct_all[indices] = correct
             counts_all[indices] = counts
             
-            if img_id==img_nums and correct.sum()==0 and get_new==False: #Attack finish
+            if img_id==img_nums and correct.sum()==0 and get_new_flag==False: #Attack finish
                 break
             if correct.sum()<minibatch:
                 indices *=correct_all
@@ -622,7 +624,7 @@ def parse_args():
     parser.add_argument('--input_dir',default='./images', help='input dir of images', type=str)
     parser.add_argument('--label_file',default='old_labels', help='label file name in input dir', type=str)
     parser.add_argument('--model1',default='inception_v3', help="Name of victim Model", type=str)
-    parser.add_argument('--model2',default='resnet_v2_152', help="Name of substitute Model",type=str)
+    parser.add_argument('--model2',default='resnet152', help="Name of substitute Model",type=str)
     parser.add_argument('--gpu_id', default="0,1,2", help='using gpu id', type=str)
     parser.add_argument('--epsilon', default=0.1, help="Epsilon in Simba Attack part", type=float)
     parser.add_argument('--seed', default=1, help="Random number generate seed", type=int)
