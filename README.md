@@ -1,4 +1,8 @@
-## LeBA: Learning Black-Box Attackers with Transferable Priors and Query Feedback
+## Learning Black-Box Attackers with Transferable Priors and Query Feedback
+
+Jiancheng Yang*, Yangzhou Jiang*, Xiaoyang Huang, Bingbing Ni, Chenglong Zhao.
+
+*Neural Information Processing Systems (NeurIPS), 2020*
 
 We propose new black-box attack method, which combine transferability-based and query-based black-box attack.
 
