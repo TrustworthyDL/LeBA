@@ -195,7 +195,7 @@ def attack_black(images, labels, model, model2, preprocess1, preprocess2, counts
     adv_img.requires_grad=True
     diff=0
     momentum=0.9
-    epsilon=1.0
+    epsilon= args.max_distance/16.37
     max_distance = args.max_distance
     img_num = images.shape[0]
     best_advimg = images.clone()
@@ -244,8 +244,8 @@ def get_trans_advimg(imgs, model2, labels, raw_imgs, ba_num):
     adv_img = imgs.detach().clone()
     adv_img.requires_grad=True
     diff=0
-    momentum=0.9
-    epsilon=1.0
+    momentum = 0.9
+    epsilon = args.max_distance/16.37
     max_distance = args.max_distance
     img_num = imgs.shape[0]
     def proj(img,diff, mask=None):
@@ -562,7 +562,8 @@ def run_attack_train(model, model2, data_loader, minibatch,
         if not with_s_prior:
             prior_prob = torch.ones(imgs.shape).to(device)
         selects = select_points(mode='by_prob', probs=prior_prob, select_num=1) #Select point according to prior prob got by TIMI.
-        diff,diff_kernel = get_diff_gauss(selects, imgs.shape, reference, k_size=25)   #Add gaussian noise on select pixel.
+        k_size = int( (args.max_distance*25/16.38 +1)//2*2+1 )
+        diff,diff_kernel = get_diff_gauss(selects, imgs.shape, reference, k_size=k_size)   #Add gaussian noise on select pixel.
 
         c1 = correct.clone()      
         adv_imgs = proj(imgs[correct], diff[correct], raw_imgs[correct])     

@@ -12,6 +12,10 @@ This paper addresses the challenging black-box adversarial attack problem, where
 ### Implementation
 Due to the size limitation of supplementary, we do not provide weights of model and datasets here.  Note that our experiments setting is similar to paper [Improving Black-box Adversarial Attacks with a Transfer-based Prior](https://arxiv.org/pdf/1906.06919.pdf), including models and attack setting. Code and experiment setting will be open source after acceptance.
 
+#### Requirements 
+The dependent package we use include: pytorch=1.2.0, pandas=0.25.1, pillow=5.4.1, opencv-python=4.1.1.26.
+Note that the key package is pytorch.
+
 #### Prepare Data
 You can put ImageNet images and label file in dir `images` or try our example images in `images` first.  
 Note that you can find dataset IMGN1 in our paper from this [Repo](https://github.com/prior-guided-rgf/Prior-Guided-RGF). 
