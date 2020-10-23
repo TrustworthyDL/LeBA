@@ -16,13 +16,22 @@ Due to the size limitation of supplementary, we do not provide weights of model 
 The dependent package we use include: `pytorch=1.2.0, pandas=0.25.1, pillow=5.4.1, opencv-python=4.1.1.26`.  
 Note that the key package is pytorch.
 
+
+
 #### Prepare Data
 You can put ImageNet images and label file in dir `images` or try our example images in `images` first.  
 Note that you can find dataset IMGN1 in our paper in
 [Baidu driver](https://pan.baidu.com/s/1nt5guRByhu-hVo-98fj0SA) (Password：wawy) and  [Google Driver](https://drive.google.com/file/d/1wMpxCPfloy13UlYxhFxM_5fn7Rr2kEPm/view?usp=sharing).
+
 #### Prepare Models
 You can prepare your own model as victim model or surrogate model, and  modify function `get_models` in `data_utils.py`.  
 We provide pretrain ImageNet model from torchvision, note that we test in pretrain model from Tensorflow-Slim in paper.
+
+##### Pretrain models and model used in exps
+
+You can find the models we used in experiments and pretrained in this folder on [Baudu driver](https://pan.baidu.com/s/1--gi2rJagnGZ3kcY5vQKQg)(Password:r4z6) and [Google Driver](https://drive.google.com/file/d/11DHdogeJbunThQMP8PgORO7kcOggPSD-/view?usp=sharing).
+
+
 
 #### Script of Repo
 LeBA2.py: Main script of LeBA attack, incluing 5 attack mode (train, test, SimBA, SimBA+, SimBA++).
