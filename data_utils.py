@@ -79,6 +79,27 @@ def load_images_data(input_dir,  batch_size=16, shuffle=False, label_file='old_l
     return dataloader
 
 def get_model(model_type):
+    '''if model_type=='inception_v3':
+        MainModel = imp.load_source('MainModel', "./pth_weights/tf_inception_v3.py")
+        model = torch.load('./pth_weights/tf_inception_v3.pth')
+    elif model_type=='adv_inception_v3':
+        MainModel = imp.load_source('MainModel', "./pth_weights/tf_inception_v3.py")
+        model = torch.load('./pth_weights/tf_adv_inception_v3.pth')
+    elif model_type=='resnet_v2_152':
+        MainModel = imp.load_source('MainModel', "./pth_weights/resnet_v2_152.py")
+        model = torch.load('./pth_weights/resnet_v2_152.pth')
+    elif model_type=="inception_v4":
+        MainModel = imp.load_source('MainModel', "./pth_weights/inception_v4.py")
+        model = torch.load('./pth_weights/inception_v4.pth')
+    elif model_type=="inception_resnet_v2":
+        MainModel = imp.load_source('MainModel', "./pth_weights/inception_resnet_v2.py")
+        model = torch.load('./pth_weights/inception_resnet_v2.pth')     
+    elif model_type=="vgg16":
+        MainModel = imp.load_source('MainModel', "./pth_weights/vgg16.py")
+        model = torch.load('./pth_weights/vgg16.pth')    
+    elif model_type=="resnet_50":   #resnet_v2 from tensorflow
+        MainModel = imp.load_source('MainModel', "./pth_weights/resnet50.py")
+        model = torch.load('./pth_weights/resnet50.pth') '''
     return imagenet.get_model(model_type)
 
 def normalize(x, mean=[0.5,0.5,0.5], std=[0.5,0.5,0.5]):
