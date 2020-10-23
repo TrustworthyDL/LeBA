@@ -18,8 +18,7 @@ Note that the key package is pytorch.
 
 #### Prepare Data
 You can put ImageNet images and label file in dir `images` or try our example images in `images` first.  
-Note that you can find dataset IMGN1 in our paper from this [Repo](https://github.com/prior-guided-rgf/Prior-Guided-RGF). 
-
+Note that you can find dataset IMGN1 in our paper in [Baidu driver](https://pan.baidu.com/s/1nt5guRByhu-hVo-98fj0SA) (Password：wawy) and 
 #### Prepare Models
 You can prepare your own model as victim model or surrogate model, and  modify function `get_models` in `data_utils.py`.  
 We provide pretrain ImageNet model from torchvision, note that we test in pretrain model from Tensorflow-Slim in paper.
@@ -32,7 +31,6 @@ get_result.py: Evaluate result file.
 defense: Contain defense method, but currently only Jpeg Compression is provided.
 
 #### Run LeBA
-
 Use run_attack.py, it will save all the result files to the dir like: 'note_log_all/inception_v3_Dec10_f1'. Please edit run_attack.py to specify the attack mode(train, test, SimBA, SimBA+, SimBA++), else it will run 5 attack mode in sequence.
 ```
 python run_attack.py --gpu_id=0,1,2 --script=LeBA10.py --model1=inception_v3 --model2=resnet152

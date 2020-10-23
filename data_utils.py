@@ -63,7 +63,7 @@ class ImageSet(Dataset):
         }
         return sample
 
-def load_images_data(input_dir,  batch_size=16, shuffle=False, label_file='labels2'):   #Only forward
+def load_images_data(input_dir,  batch_size=16, shuffle=False, label_file='old_labels'):   #Only forward
     dev_data = pd.read_csv(input_dir+'/'+label_file,header=None, sep=' ',
                             names=['image_path','label_idx','target_idx'])
     transformer = transforms.Compose([
