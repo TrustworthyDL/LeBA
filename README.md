@@ -1,6 +1,6 @@
 ## Learning Black-Box Attackers with Transferable Priors and Query Feedback
 
-[Jiancheng Yang](https://jiancheng-yang.com/)*, Yangzhou Jiang*, [Xiaoyang Huang](http://scholar.google.com/citations?user=Svw7X6kAAAAJ&hl=en), [Bingbing Ni](https://scholar.google.com/citations?user=eUbmKwYAAAAJ&hl=zh-CN), [Chenglong Zhao](https://scholar.google.com/citations?user=wl55lFoAAAAJ&hl=zh-CN).
+[Jiancheng Yang](https://jiancheng-yang.com/)\*, Yangzhou Jiang\*, [Xiaoyang Huang](http://scholar.google.com/citations?user=Svw7X6kAAAAJ&hl=en), [Bingbing Ni](https://scholar.google.com/citations?user=eUbmKwYAAAAJ&hl=zh-CN), [Chenglong Zhao](https://scholar.google.com/citations?user=wl55lFoAAAAJ&hl=zh-CN).
 
 *Neural Information Processing Systems (NeurIPS), 2020* ([arXiv](https://arxiv.org/abs/2010.11742))
 
