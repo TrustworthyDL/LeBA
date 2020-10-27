@@ -25,9 +25,9 @@ Note that you can find dataset IMGN1 in our paper in
 
 #### Prepare Models
 You can prepare your own model as victim model or surrogate model, and  modify function `get_models` in `data_utils.py`.  
-We provide pretrain ImageNet model from torchvision, note that we test in pretrain model from Tensorflow-Slim in paper.
+We provide pretrain ImageNet model from torchvision, note that we test with pretrained models from Tensorflow-Slim in paper.
 
-##### Pretrain models and model used in exps
+##### Pretrain models and model used in exps 
 
 You can find the models we used in experiments and pretrained in this folder on [Baidu Wangpan](https://pan.baidu.com/s/1--gi2rJagnGZ3kcY5vQKQg)(Password:r4z6) and [Google Drive](https://drive.google.com/file/d/11DHdogeJbunThQMP8PgORO7kcOggPSD-/view?usp=sharing).
 
