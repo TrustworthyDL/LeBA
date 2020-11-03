@@ -39,10 +39,34 @@ get_result.py: Evaluate result file.
 defense: Contain defense method, but currently only Jpeg Compression is provided.
 
 #### Run LeBA
+# RUN different (train, test, SimBA, SimBA+, SimBA++) mode in sequence with script
 Use run_attack.py, it will save all the result files to the dir like: 'note_log_all/inception_v3_Dec10_f1'. Please edit run_attack.py to specify the attack mode(train, test, SimBA, SimBA+, SimBA++), else it will run 5 attack mode in sequence.
 ```
 python run_attack.py --gpu_id=0,1,2 --script=LeBA10.py --model1=inception_v3 --model2=resnet152
 ```
+
+# To run SimBA+ mode
+```
+python LeBA10.py --mode=simba+ --model1=inception_v3 --model2=resnet152 --input_dir=images --label=labels --out_dir="your output dir" 
+```
+# To run SimBA++ mode
+```
+python LeBA10.py --mode=simba++ --model1=inception_v3 --model2=resnet152 --input_dir=images --label=labels --out_dir="your output dir" 
+```
+
+# To run LeBA 
+```
+python LeBA10.py --mode=train --model1=inception_v3 --model2=resnet152 --input_dir=images --label=labels --out_dir="your output dir" --pretrain_weight=""
+```
+
+# To run LeBA(test) mode
+After run LeBA, use weight trained in LeBA to test on another dataset.
+```
+python LeBA10.py --mode=test --model1=inception_v3 --model2=resnet152 --input_dir=imagesset2 --label=labels --out_dir="same output dir as train" --pretrain_weight="this_weight"
+```
+
+
+
 
 To attack defensive model:
 ```
