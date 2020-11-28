@@ -19,7 +19,7 @@ Note that the key package is pytorch.
 #### Prepare Data
 You can put ImageNet images and label file in dir `images` or try our example images in `images` first.  
 Note that you can find dataset IMGN1 in our paper in
-[Baidu driver](https://pan.baidu.com/s/1nt5guRByhu-hVo-98fj0SA) (Password：wawy) and  [Google Driver](https://drive.google.com/file/d/1wMpxCPfloy13UlYxhFxM_5fn7Rr2kEPm/view?usp=sharing).
+[Baidu Wangpan](https://pan.baidu.com/s/1nt5guRByhu-hVo-98fj0SA) (Password：wawy) and  [Google Drive](https://drive.google.com/file/d/1wMpxCPfloy13UlYxhFxM_5fn7Rr2kEPm/view?usp=sharing).
 
 #### Prepare Models
 You can prepare your own model as victim model or surrogate model, and  modify function `get_models` in `data_utils.py`.  
