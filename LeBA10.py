@@ -470,6 +470,8 @@ def run_attack_train(model, model2, data_loader, minibatch,
                 L2 = distance(imgs, raw_imgs)
                 end_type_all[indices] = end_type
                 L2_all[indices] = L2
+                correct_all[indices] = correct
+                counts_all[indices] = counts
                 with open(out_dir+'/'+log_name,'a')  as f:
                     for i in range(len(imgs)):
                         if correct[i]==False or counts[i]>max_query:
@@ -478,9 +480,6 @@ def run_attack_train(model, model2, data_loader, minibatch,
                             adv_img = imgs[i].cpu().detach().numpy().clip(0, 1).transpose((1,2,0))
                             imsave(out_dir+'/images/'+filenames[i], adv_img)  #Save adversarial example
                             correct[i]=False  
-            correct_all[indices] = correct
-            counts_all[indices] = counts
-            
             if img_id==img_nums and correct.sum()==0 and get_new_flag==False: #Attack finish
                 break
             if correct.sum()<minibatch:
