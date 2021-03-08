@@ -440,7 +440,7 @@ def run_attack_train(model, model2, data_loader, minibatch,
     data_iter = iter(data_loader)
     img_nums = len(data_loader)
 
-    minibatch = minibatch if minibatch>img_nums else img_nums
+    minibatch = minibatch if minibatch<=img_nums else img_nums
     correct_all = torch.ones([img_nums]).bool().to(device)  #record all correct(not success) flag
     counts_all = torch.zeros([img_nums]).to(device)         #Record all query numbers 
     end_type_all = torch.zeros([img_nums]).to(device).float()  #for debug
